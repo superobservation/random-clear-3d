@@ -1,0 +1,12 @@
+newmtl bottom:Wax__Natural_
+illum 4
+Kd 0.85 0.83 0.67
+Ka 0.40 0.40 0.40
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl top1:Jade__White_Green_
+illum 4
+Kd 0.36 0.24 0.54
+Ka 0.40 0.40 0.40
+Tf 1.00 1.00 1.00
+Ni 1.00

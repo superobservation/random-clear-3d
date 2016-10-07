@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>vitamixer Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0">
+
+    <script src="js/xeoengine.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet"/>
+
+    <style>
+        canvas {
+            display: block;
+            width : 100%;
+            height : 100%;
+            touch-action: auto
+        }
+
+        #snapshotImage {
+            display: inline-block;
+            margin: 5px;
+            background-color: #333;
+            box-shadow: 2px 2px 2px black;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="infoLight">
+This is what your <a
+        href="../docs/classes/Canvas.html"
+        target="_docs">custom vitamin</a> will look like.
+</div>
+
+<canvas id="myCanvas" width="100%" height="400"></canvas>
+
+<script>
+
+    // Not using the default Scene, so that we can
+    // bind our Scene to our custom canvas
+    var scene = new XEO.Scene({
+        canvas: "myCanvas",
+        webgl2 : true, //patiently waiting for webgl2
+        transparent: true
+    });
+
+
+    // Torus entity
+        new XEO.Model(scene, {
+        // Source glTF file
+        src: "models/gltf/vitamin-1/a-b.gltf",
+
+          material: new XEO.PhongMaterial(scene, {
+            ambient: [0.8, 0.9, 0.4],
+            shininess: 90,
+        }),
+
+    });
+
+
+
+
+    // Set initial camera position
+    scene.camera.view.eye = [0, 0, -3.5];
+
+    // Orbit the camera
+    scene.on("tick",
+            function () {
+
+                var view = scene.camera.view;
+
+                view.rotateEyeY(0.13);
+                view.rotateEyeX(0.15);
+            });
+
+    // Allow user interaction
+    new XEO.CameraControl(scene);
+
+</script>
+</body>
+</html>
